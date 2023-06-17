@@ -46,4 +46,6 @@ FROM Votes v
 JOIN Answers a ON v.answer_id = a.answer_id
 JOIN Users u ON v.user_id = u.user_id;
 
+SELECT * FROM Votes
+
 
