@@ -7,6 +7,9 @@ CREATE TABLE Users
     display_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
+	emailed INT DEFAULT 0,
+	deleted INT DEFAULT 0,
+	admin INT DEFAULT 0,
     CONSTRAINT UC_Users_DisplayName UNIQUE (display_name),
     CONSTRAINT UC_Users_Email UNIQUE (email)
 );
@@ -17,6 +20,7 @@ CREATE TABLE Questions
     question VARCHAR(255),
     additional_info VARCHAR(255),
     category VARCHAR(255),
+	deleted INT DEFAULT 0,
     user_id INT,
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
@@ -27,6 +31,7 @@ CREATE TABLE Answers (
     question_id INT,
     user_id INT,
     display_name VARCHAR(255),
+	deleted INT DEFAULT 0,
     FOREIGN KEY (question_id) REFERENCES Questions(question_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (display_name) REFERENCES Users(display_name)
@@ -38,6 +43,7 @@ CREATE TABLE Comments
     comment VARCHAR(255),
     answer_id INT,
     user_id INT,
+	deleted INT DEFAULT 0,
     FOREIGN KEY (answer_id) REFERENCES Answers(answer_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );

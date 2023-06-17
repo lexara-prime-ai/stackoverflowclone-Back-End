@@ -1,0 +1,15 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "Custom test suite for endpoint testing",
+  "main": "users-endpoints.test.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Irfan Ghat",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3"
+  }
+}
