@@ -10,3 +10,13 @@ describe("GET /users", () => {
         })
     })
 })
+
+describe("GET /questions", () => {
+    /* GET ALL QUESTIONS */
+    describe("Get all questions", () => {
+        test("should respond with a status code of 200", async () => {
+            const response = await request(SERVER).get("/questions");
+            expect(response.statusCode).toBe(200);
+        })
+    })
+})
