@@ -4,6 +4,38 @@ import { Request, Response } from 'express';
 import { DB_OPERATIONS } from '../helpers/DB-OPERATIONS';
 import { VALIDATION_SCHEMA } from '../helpers/LOGIN-VALIDATION';
 
+/*************** DECORATORS ***************/
+/* DECORATOR FOR HANDLING ERRORS */
+const ERROR_HANDLER = (handler: any) => {
+    return async (req: Request, res: Response) => {
+        try {
+            await handler(req, res);
+        } catch (error: any) {
+            res.status(500).json(`ERROR: ${error.message}`);
+        }
+    }
+}
+
+/* DECORATOR FOR CHECKING IF A USER EXISTS */
+const CHECK_USER_EXISTS = (handler: any) => {
+    return async (req: Request<{ user_id: string }>, res: Response) => {
+        try {
+            const { user_id } = req.params;
+            const user = await (await DB_OPERATIONS.EXECUTE('getUserById', { user_id })).recordset[0];
+
+            if (!user) {
+                return res.status(404).json({
+                    message: 'User not found!'
+                });
+            }
+
+            await handler(req, res);
+        } catch (error: any) {
+            res.status(500).json(`ERROR: ${error.message}`);
+        }
+    }
+}
+/************************************/
 
 /* EXPORT MODULE | getUsers */
 export const getUsers = async (req: Request, res: Response) => {

@@ -7,7 +7,7 @@ GET http://localhost:8000/users
 
 
 #### GET ALL USER BY ID ####
-GET http://localhost:8000/users/2
+GET http://localhost:8000/users/3
 
 #### ADD USER ####
 POST http://localhost:8000/users
@@ -20,13 +20,13 @@ Content-Type: application/json
 }
 
 #### UPDATE USER ####
-PUT http://localhost:8000/users/1
+PUT http://localhost:8000/users/3
 Content-Type: application/json
 
 {
-    "display_name": "John Donut",
-    "email": "johndonut@example.com",
-    "password": "password123"
+    "display_name": "Mike Johnson",
+    "email": "mikejohnson@example.com",
+    "password": "nuPassword"
 }
 
 #### DELETE USER ####

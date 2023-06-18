@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {  } from "../controllers/user-controller";
+import { getQuestions, getQuestionById, addQuestion, updateQuestion, deleteQuestion } from "../controllers/question-controller";
 
 /* INITIALIZE ROUTER */
 const questionRoutes = Router();

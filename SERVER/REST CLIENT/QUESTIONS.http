@@ -2,32 +2,34 @@
 ######## ENDPOINTS ########
 ###########################
 
-#### GET ALL USERS ####
+#### GET ALL QUESTIONS ####
 GET http://localhost:8000/questions
 
 
-#### GET ALL USER BY ID ####
+#### GET ALL QUESTION BY ID ####
 GET http://localhost:8000/questions/2
 
-#### ADD USER ####
+#### ADD QUESTION ####
 POST http://localhost:8000/questions
 Content-Type: application/json
 
 {
-    "display_name": "olly_steele",
-    "email": "oliversteele@hotmail.uk",
-    "password": "K!llsw1tch"
+    "question": "What is the .NET framework",
+    "additional_info": "Learning about C#",
+    "category": "c#",
+    "user_id": 5
 }
 
-#### UPDATE USER ####
-PUT http://localhost:8000/questions/1
+#### UPDATE QUESTION ####
+PUT http://localhost:8000/questions/7
 Content-Type: application/json
 
 {
-    "display_name": "John Donut",
-    "email": "johndonut@example.com",
-    "password": "password123"
+    "question": "What is the C#.NET framework",
+    "additional_info": "Would like to know the difference",
+    "category": "c#",
+    "user_id": 5
 }
 
-#### DELETE USER ####
+#### DELETE QUESTION ####
 DELETE http://localhost:8000/questions/2

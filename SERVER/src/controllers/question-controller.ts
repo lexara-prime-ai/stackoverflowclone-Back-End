@@ -2,7 +2,6 @@
 import { Request, Response } from 'express';
 /* CUSTOM MODULES */
 import { DB_OPERATIONS } from '../helpers/DB-OPERATIONS';
-import { VALIDATION_SCHEMA } from '../helpers/QUESTION-VALIDATION';
 
 
 /* EXPORT MODULE | getQuestions */
@@ -42,18 +41,13 @@ export const getQuestionById = async (req: Request<{ question_id: string }>, res
 export const addQuestion = async (req: Request, res: Response) => {
     try {
         /* READ Request BODY */
-        const { question, additional_info, category } = req.body;
-        /* VALIDATION */
-        const { error } = VALIDATION_SCHEMA.validate(req.body);
-        /* THROW ERROR IF VALIDATION FAILS */
-        if (error) {
-            return res.status(404).json(error.details[0].message);
-        }
+        const { question, additional_info, category, user_id } = req.body;
 
         await DB_OPERATIONS.EXECUTE('addQuestion', {
             question,
             additional_info,
-            category
+            category,
+            user_id
         });
 
         /* SUCCESS STATE */
@@ -70,52 +64,53 @@ export const updateQuestion = async (req: Request, res: Response) => {
     try {
         /* GET question_id */
         const { question_id } = req.params;
-        /*RETRIEVE USER FROM DATABSE USING ASSIGNED question_id*/
-        let question = await (await DB_OPERATIONS.EXECUTE('getUserById', { question_id })).recordset[0];
 
-        /* CHECK IF USER EXISTS */
-        if (!question) {
+        /*RETRIEVE QUESTION FROM DATABSE USING ASSIGNED question_id*/
+        let original_question = await (await DB_OPERATIONS.EXECUTE('getQuestionById', { question_id })).recordset[0];
+
+        /* CHECK IF QUESTION EXISTS */
+        if (!original_question) {
             res.status(404).json({
-                message: 'User not found!'
+                message: 'Question not found!'
             });
         }
 
-        /* PROCEED WITH UPDATE IF USER EXISTS */
-        const { display_name, email, password } = req.body;
+        /* PROCEED WITH UPDATE IF QUESTION EXISTS */
+        const { question, additional_info, category, user_id } = req.body;
 
         await DB_OPERATIONS.EXECUTE('updateQuestion', {
-            question_id, display_name, email, password
+            question_id, question, additional_info, category, user_id
         });
 
         /* SUCCESS STATE */
         res.status(201).json({
-            message: 'User updated successfully!'
+            message: 'Question updated successfully!'
         });
     } catch (error: any) {
         res.status(500).json(`ERROR: ${error.message}`);
     }
 }
 
-/* EXPORT MODULE | deleteUser */
-export const deleteUser = async (req: Request, res: Response) => {
+/* EXPORT MODULE | deleteQuestion */
+export const deleteQuestion = async (req: Request, res: Response) => {
     try {
         /* GET question_id */
         const { question_id } = req.params;
-        /*RETRIEVE USER FROM DATABSE USING ASSIGNED question_id*/
-        let question = await (await DB_OPERATIONS.EXECUTE('getUserById', { question_id })).recordset[0];
+        /*RETRIEVE QUESTION FROM DATABSE USING ASSIGNED question_id*/
+        let question = await (await DB_OPERATIONS.EXECUTE('getQuestionById', { question_id })).recordset[0];
 
-        await (await DB_OPERATIONS.EXECUTE('deleteUser', { question_id }));
+        await (await DB_OPERATIONS.EXECUTE('deleteQuestion', { question_id }));
 
-        /* CHECK IF USER EXISTS */
+        /* CHECK IF QUESTION EXISTS */
         if (!question) {
             res.status(404).json({
-                message: 'User not found!'
+                message: 'Question not found!'
             });
         }
 
         /* SUCCESS STATE */
         res.status(200).json({
-            message: 'User deleted!'
+            message: 'Question deleted!'
         });
     } catch (error: any) {
         res.status(500).json(`ERROR: ${error.message}`);

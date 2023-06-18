@@ -4,7 +4,7 @@
   "description": "Custom test suite for endpoint testing",
   "main": "users-endpoints.test.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --forceExit"
   },
   "author": "Irfan Ghat",
   "license": "ISC",
