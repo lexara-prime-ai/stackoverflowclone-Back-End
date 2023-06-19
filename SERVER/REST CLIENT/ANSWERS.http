@@ -1,0 +1,34 @@
+###########################
+######## ENDPOINTS ########
+###########################
+
+#### GET ALL ANSWERS ####
+GET http://localhost:8000/answers 
+
+#### GET ANSWER BY ID ####
+GET http://localhost:8000/answers/1
+
+#### ADD ANSWER ####
+POST http://localhost:8000/answers 
+Content-Type: application/json
+
+{
+    "answer": "It helps with clarity of mind and physical health as well.",
+    "question_id": 3,
+    "user_id": 4,
+    "display_name": "Emily Brown"
+}
+
+#### UPDATE ANSWER ####
+PUT http://localhost:8000/answers/1
+Content-Type: application/json
+
+{
+    "answer": "It helps with clarity of mind as well as physical health.",
+    "question_id": 3,
+    "user_id": 4,
+    "display_name": "Emily Brown"
+}
+
+#### DELETE ANSWER ####
+DELETE http://localhost:8000/answers/6

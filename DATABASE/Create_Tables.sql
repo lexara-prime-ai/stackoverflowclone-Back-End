@@ -53,7 +53,5 @@ CREATE TABLE Votes
     vote_id INT IDENTITY(1, 1) PRIMARY KEY,
     vote_count INT,
     answer_id INT,
-    user_id INT,
-    FOREIGN KEY (answer_id) REFERENCES Answers(answer_id),
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+    FOREIGN KEY (answer_id) REFERENCES Answers(answer_id)
 );

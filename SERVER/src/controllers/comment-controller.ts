@@ -62,21 +62,21 @@ export const updateComment = async (req: Request, res: Response) => {
         /* GET comment_id */
         const { comment_id } = req.params;
 
-        /*RETRIEVE QUESTION FROM DATABSE USING ASSIGNED comment_id*/
+        /*RETRIEVE COMMENT FROM DATABSE USING ASSIGNED comment_id*/
         let original_comment = await (await DB_OPERATIONS.EXECUTE('getCommentById', { comment_id })).recordset[0];
 
-        /* CHECK IF QUESTION EXISTS */
+        /* CHECK IF COMMENT EXISTS */
         if (!original_comment) {
             res.status(404).json({
                 message: 'Comment not found!'
             });
         }
 
-        /* PROCEED WITH UPDATE IF QUESTION EXISTS */
+        /* PROCEED WITH UPDATE IF COMMENT EXISTS */
         const { comment, answer_id, user_id } = req.body;
 
         await DB_OPERATIONS.EXECUTE('updateComment', {
-            comment, answer_id, user_id
+            comment_id, comment, answer_id, user_id
         });
 
         /* SUCCESS STATE */
@@ -93,12 +93,12 @@ export const deleteComment = async (req: Request, res: Response) => {
     try {
         /* GET comment_id */
         const { comment_id } = req.params;
-        /*RETRIEVE QUESTION FROM DATABSE USING ASSIGNED comment_id*/
+        /*RETRIEVE COMMENT FROM DATABSE USING ASSIGNED comment_id*/
         let comment = await (await DB_OPERATIONS.EXECUTE('getCommentById', { comment_id })).recordset[0];
 
         await (await DB_OPERATIONS.EXECUTE('deleteComment', { comment_id }));
 
-        /* CHECK IF QUESTION EXISTS */
+        /* CHECK IF COMMENT EXISTS */
         if (!comment) {
             res.status(404).json({
                 message: 'Comment not found!'

@@ -13,21 +13,20 @@ POST http://localhost:8000/comments
 Content-Type: application/json
 
 {
-    "comment": "Hmmm...Wonder how it's pronounced",
-    "answer_id": 1,
-    "user_id": 5
+    "comment": "Thanks a lot Sherlock.",
+    "answer_id": 3,
+    "user_id": 4
 }
 
 #### UPDATE COMMENT ####
-PUT http://localhost:8000/comments/7
+PUT http://localhost:8000/comments/1
 Content-Type: application/json
 
 {
-    "comment": "What is the C#.NET framework",
-    "additional_info": "Would like to know the difference",
-    "category": "c#",
-    "user_id": 5
+    "comment": "Thanks for the clear and concise answer!",
+    "answer_id": 1,
+    "user_id": 1
 }
 
 #### DELETE COMMENT ####
-DELETE http://localhost:8000/comments/2
+DELETE http://localhost:8000/comments/6
