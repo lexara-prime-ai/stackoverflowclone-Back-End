@@ -1,3 +1,6 @@
+USE StackNewbie
+GO
+
 SELECT * FROM Questions
 SELECT * FROM Answers
 SELECT * FROM Comments

@@ -27,7 +27,9 @@ describe("/users", () => {
                 password: "newtestuserpwd"
             });
 
-            const response = request(SERVER).post("/users");
+            const response = request(SERVER)
+            .post("/users")
+            .send(POST_DATA);
             // expect((await response).statusCode).toBe(201);
             expect((await response).body.display_name).toBe(POST_DATA.display_name);
             expect((await response).body.email).toBe(POST_DATA.email);
@@ -79,7 +81,10 @@ describe("/questions", () => {
                 category: "go"
             });
 
-            const response = request(SERVER).post("/questions");
+            const response = await request(SERVER)
+            .put(`/users/${user_id}`)
+            .send(PUT_DATA);
+
             expect((await response).statusCode).toBe(201);
             expect((await response).body.question).toBe(POST_DATA.question);
             expect((await response).body.additional_info).toBe(POST_DATA.additional_info);
