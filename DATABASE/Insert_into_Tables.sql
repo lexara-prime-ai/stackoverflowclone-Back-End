@@ -1,4 +1,5 @@
-USE StackNewbie GO 
+USE StackNewbie 
+GO 
 
 --####################
 -- INSERT INTO Users
@@ -102,9 +103,9 @@ VALUES ('Thanks for the explanation!', 4, 2);
 --INSERTING VOTES
 --################
 -- Inserting an upvote for an answer by a user
-INSERT INTO Votes (vote_count, answer_id, user_id)
-VALUES (1, 3, 1);
+INSERT INTO Votes (vote_count, answer_id)
+VALUES (1, 3);
 
 -- Inserting a downvote for a different answer by a different user
-INSERT INTO Votes (vote_count, answer_id, user_id)
-VALUES (-1, 4, 2);
+INSERT INTO Votes (vote_count, answer_id)
+VALUES (-1, 4);

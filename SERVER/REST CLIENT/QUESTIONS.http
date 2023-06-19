@@ -7,7 +7,7 @@ GET http://localhost:8000/questions
 
 
 #### GET QUESTION BY ID ####
-GET http://localhost:8000/questions/2
+GET http://localhost:8000/questions/3
 
 #### ADD QUESTION ####
 POST http://localhost:8000/questions
