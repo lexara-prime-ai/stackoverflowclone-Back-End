@@ -1,6 +1,7 @@
 const request = require('supertest');
 const SERVER = require('../SERVER/build/server');
 
+/* USERS */
 describe("GET /users", () => {
     /* GET ALL USERS */
     describe("Get all users", () => {
@@ -11,6 +12,7 @@ describe("GET /users", () => {
     })
 })
 
+/* QUESTIONS */
 describe("GET /questions", () => {
     /* GET ALL QUESTIONS */
     describe("Get all questions", () => {

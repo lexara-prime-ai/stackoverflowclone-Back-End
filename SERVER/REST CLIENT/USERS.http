@@ -6,7 +6,7 @@
 GET http://localhost:8000/users
 
 
-#### GET ALL USER BY ID ####
+#### GET USER BY ID ####
 GET http://localhost:8000/users/3
 
 #### ADD USER ####

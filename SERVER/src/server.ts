@@ -5,6 +5,7 @@ import { json } from 'express';
 import cors from 'cors';
 import userRoutes from './routes/user-routes';
 import questionRoutes from './routes/question-routes';
+import commentRoutes from './routes/comment-routes';
 
 /* INITIALIZE SERVER */
 const SERVER = express();
@@ -27,6 +28,7 @@ function REQUEST_LOGGER(req: Request, res: Response, next: NextFunction) {
 SERVER.use(REQUEST_LOGGER);
 SERVER.use('/users', userRoutes);
 SERVER.use('/questions', questionRoutes);
+SERVER.use('/comments', commentRoutes);
 
 SERVER.get('/', (req, res) => {
 

@@ -1,0 +1,33 @@
+###########################
+######## ENDPOINTS ########
+###########################
+
+#### GET ALL COMMENTS ####
+GET http://localhost:8000/comments 
+
+#### GET COMMENT BY ID ####
+GET http://localhost:8000/comments/1
+
+#### ADD COMMENT ####
+POST http://localhost:8000/comments 
+Content-Type: application/json
+
+{
+    "comment": "Hmmm...Wonder how it's pronounced",
+    "answer_id": 1,
+    "user_id": 5
+}
+
+#### UPDATE COMMENT ####
+PUT http://localhost:8000/comments/7
+Content-Type: application/json
+
+{
+    "comment": "What is the C#.NET framework",
+    "additional_info": "Would like to know the difference",
+    "category": "c#",
+    "user_id": 5
+}
+
+#### DELETE COMMENT ####
+DELETE http://localhost:8000/comments/2
