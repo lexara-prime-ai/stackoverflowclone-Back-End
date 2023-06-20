@@ -1,9 +1,16 @@
+/* CORE MODULES */
+import path from "path";
 /* THIRD PARTY MODULES */
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
+import bcrypt from "bcrypt";
+import JWT from "jsonwebtoken";
+import dotenv from "dotenv";
+/* dotenv PATH CONFIG */
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 /* CUSTOM MODULES */
 import { DB_OPERATIONS } from '../helpers/DB-OPERATIONS';
 import { VALIDATION_SCHEMA } from '../helpers/LOGIN-VALIDATION';
- 
+
 /* EXPORT MODULE | getUsers */
 export const getUsers = async (req: Request, res: Response) => {
     try {
@@ -18,7 +25,7 @@ export const getUsers = async (req: Request, res: Response) => {
 /* EXPORT MODULE | getUserById */
 export const getUserById = async (req: Request<{ user_id: string }>, res: Response) => {
     try {
-        /* GET user_id FROM REQUEST BODY */
+        /* GET user_id FROM REQUEST BODY */ 
         const { user_id } = req.params;
 
         let user = await (await DB_OPERATIONS.EXECUTE('getUserById', { user_id })).recordset[0];
@@ -49,10 +56,13 @@ export const addUser = async (req: Request, res: Response) => {
             return res.status(404).json(error.details[0].message);
         }
 
+        /* HASH PASSWORD */
+        const hashed_password = await bcrypt.hash(password, 10);
+
         await DB_OPERATIONS.EXECUTE('addUser', {
             display_name,
             email,
-            password
+            password: hashed_password
         });
 
         /* SUCCESS STATE */
@@ -82,8 +92,11 @@ export const updateUser = async (req: Request, res: Response) => {
         /* PROCEED WITH UPDATE IF USER EXISTS */
         const { display_name, email, password } = req.body;
 
+        /* HASH PASSWORD */
+        const hashed_password = await bcrypt.hash(password, 10);
+
         await DB_OPERATIONS.EXECUTE('updateUser', {
-            user_id, display_name, email, password
+            user_id, display_name, email, password: hashed_password
         });
 
         /* SUCCESS STATE */
@@ -116,6 +129,49 @@ export const deleteUser = async (req: Request, res: Response) => {
         res.status(200).json({
             message: 'User deleted!'
         });
+    } catch (error: any) {
+        res.status(500).json(`ERROR: ${error.message}`);
+    }
+}
+
+/* EXPORT MODULE | signInnUser */
+export const signInUser = async (req: Request, res: Response) => {
+    try {
+        const { email, password } = req.body as { email: string, password: string };
+
+        const user = await (await DB_OPERATIONS.EXECUTE('getUserByEmail', { email })).recordset;
+
+        /* CHECK IF USER EXISTS */
+        if (!user) {
+            return res.status(404).json({
+                message: 'User not found!'
+            });
+        }
+
+        /* VALIDATE PASSWORD */
+        const valid_password = await bcrypt.compare(password, user[0].password);
+
+        /* IF THE PASSWORD IS INVALID */
+        if (!valid_password) {
+            return res.status(404).json({
+                message: 'User not found!'
+            });
+        }
+
+        /* CREATE PAYLOAD */
+        const payload = user.map(USER_INFO => {
+            const { password, ...rest } = USER_INFO;
+            return rest;
+        });
+
+        /* GENERATE TOKEN AND ASSIGN IT TO A USER */
+        const TOKEN = JWT.sign(payload[0], "8usbAjedEfLF7yxtdSXEyQCoJveY7PrL", { expiresIn: '360000s' });
+
+        return res.status(200).json({
+            message: 'User signed in successfully!',
+            TOKEN
+        });
+
     } catch (error: any) {
         res.status(500).json(`ERROR: ${error.message}`);
     }

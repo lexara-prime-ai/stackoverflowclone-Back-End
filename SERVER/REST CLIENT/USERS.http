@@ -2,6 +2,15 @@
 ######## ENDPOINTS ########
 ###########################
 
+#### SIGN IN USER ####
+POST http://localhost:8000/auth/sign-in
+Content-Type: application/json
+
+{
+    "email": "peterparker@hotmail.eu",
+    "password": "spid3rman"
+}
+
 #### GET ALL USERS ####
 GET http://localhost:8000/users
 
@@ -14,9 +23,9 @@ POST http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "display_name": "olly_steele",
-    "email": "oliversteele@hotmail.uk",
-    "password": "K!llsw1tch"
+    "display_name": "pizza_time",
+    "email": "peterparker@hotmail.eu",
+    "password": "spid3rman"
 }
 
 #### UPDATE USER ####

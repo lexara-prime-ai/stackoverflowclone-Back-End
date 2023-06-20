@@ -7,6 +7,7 @@ import userRoutes from './routes/user-routes';
 import questionRoutes from './routes/question-routes';
 import commentRoutes from './routes/comment-routes';
 import answerRoutes from './routes/answer-routes';
+import authenticationRoutes from './routes/authentication-routes';
 
 /* INITIALIZE SERVER */
 const SERVER = express();
@@ -27,14 +28,14 @@ function REQUEST_LOGGER(req: Request, res: Response, next: NextFunction) {
 
 /* ROUTES */
 SERVER.use(REQUEST_LOGGER);
+SERVER.use('/auth', authenticationRoutes);
 SERVER.use('/users', userRoutes);
 SERVER.use('/questions', questionRoutes);
 SERVER.use('/answers', answerRoutes);
 SERVER.use('/comments', commentRoutes);
 
 SERVER.get('/', (req, res) => {
-
-    res.send("App is running!");
+    res.send("Server is running...");
 })
 
 SERVER.listen(PORT, () => console.log(`
