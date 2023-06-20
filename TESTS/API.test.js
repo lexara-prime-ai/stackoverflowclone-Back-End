@@ -225,11 +225,11 @@ describe("/comments", () => {
     /* ADD COMMENT */
     describe("POST /comments", () => {
         test("should add a new comment and respond with a status code of 201", async () => {
-            const COMMENT_DATA = {
+            const COMMENT_DATA = create({
                 comment: "NEW COMMENT",
                 answer_id: 1,
                 user_id: 1
-            };
+            });
 
             const POST_DATA = {
                 comment: "NEW COMMENT",
