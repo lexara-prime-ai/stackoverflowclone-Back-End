@@ -20,13 +20,13 @@ Content-Type: application/json
 }
 
 #### UPDATE USER ####
-PUT http://localhost:8000/users/3
+PUT http://localhost:8000/users/6
 Content-Type: application/json
 
 {
-    "display_name": "Mike Johnson",
-    "email": "mikejohnson@example.com",
-    "password": "nuPassword"
+    "display_name": "Jake Jillan",
+    "email": "jakejillan@example.com",
+    "password": "jake's password"
 }
 
 #### DELETE USER ####

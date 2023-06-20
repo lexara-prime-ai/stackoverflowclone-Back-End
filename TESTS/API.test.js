@@ -17,23 +17,34 @@ describe("/users", () => {
         });
     });
 
-
     /* ADD USER */
     describe("POST /users", () => {
         test("should add a new user and respond with a status code of 201", async () => {
-            const POST_DATA = create({
-                display_name: "New Test User",
-                email: "newtestuser@gmail.com",
-                password: "newtestuserpwd"
+            // WILL FAIL IF display_name
+            // AND email EXISTS AS A 
+            // RESULT OF UNIQUE CONSTRAINTS
+            const USER_DATA = create({
+                display_name: "NEW TEST USER",
+                email: "test_user@gmail.com",
+                password: "test_user"
             });
 
+            const POST_DATA = {
+                display_name: "NEW TEST USER",
+                email: "test_user@gmail.com",
+                password: "test_user"
+            };
+
+            // CREATE POST REQUEST
             const response = request(SERVER)
-            .post("/users")
-            .send(POST_DATA);
-            // expect((await response).statusCode).toBe(201);
-            expect((await response).body.display_name).toBe(POST_DATA.display_name);
-            expect((await response).body.email).toBe(POST_DATA.email);
-            expect((await response).body.password).toBe(POST_DATA.password);
+                .post("/users")
+                .send(POST_DATA);
+
+            // ASSERTIONS
+            expect((await response).statusCode).toBe(201);
+            expect((await response).body.display_name).toBe(USER_DATA.display_name);
+            expect((await response).body.email).toBe(USER_DATA.email);
+            expect((await response).body.password).toBe(USER_DATA.password);
         });
     });
 
@@ -42,16 +53,18 @@ describe("/users", () => {
         test("should update a user and return a response of 201", async () => {
             const user_id = 1;
             const PUT_DATA = {
-                display_name: "Test user",
-                email: "Asking for friend",
-                password: "poiutiu"
+                display_name: "UPDATED USER",
+                email: "updated@gmail.com",
+                password: "updateduserpassword"
             };
 
+            // CREATE PUT REQUEST
             const response = await request(SERVER)
                 .put(`/users/${user_id}`)
                 .send(PUT_DATA);
 
-            expect(response.status).toBe(201);
+            // ASSERTIONS
+            expect(response.statusCode).toBe(201);
             expect(response.body.message).toBe("User updated successfully!");
         });
     });
@@ -75,38 +88,50 @@ describe("/questions", () => {
     /* ADD QUESTION */
     describe("POST /questions", () => {
         test("should add a new question and respond with a status code of 201", async () => {
-            const POST_DATA = create({
-                question: "Is Go easy to learn?",
-                additional_info: "Trying to learn a new language.",
-                category: "go"
+            const QUESTION_DATA = create({
+                question: "NEW QUESTION...",
+                additional_info: "ADDITIONAL INFO...",
+                category: "CATEGORY...",
+                user_id: 1
             });
 
-            const response = await request(SERVER)
-            .put(`/users/${user_id}`)
-            .send(PUT_DATA);
+            const POST_DATA = {
+                question: "NEW QUESTION...",
+                additional_info: "ADDITIONAL INFO...",
+                category: "CATEGORY...",
+                user_id: 1
+            };
 
+            // CREATE POST REQUEST
+            const response = request(SERVER)
+                .post("/questions")
+                .send(POST_DATA);
+
+            // ASSERTIONS
             expect((await response).statusCode).toBe(201);
-            expect((await response).body.question).toBe(POST_DATA.question);
-            expect((await response).body.additional_info).toBe(POST_DATA.additional_info);
-            expect((await response).body.category).toBe(POST_DATA.category);
+            expect((await response).body.question).toBe(QUESTION_DATA.question);
+            expect((await response).body.additional_info).toBe(QUESTION_DATA.additional_info);
+            expect((await response).body.category).toBe(QUESTION_DATA.category);
         });
     });
 
-    /* UPDATE QUESTION */
+    //     /* UPDATE QUESTION */
     describe("PUT /questions", () => {
         test("should update a question and return a response of 201", async () => {
             const question_id = 1;
             const PUT_DATA = {
-                question: "What's the capital of France?",
-                additional_info: "Asking for friend",
+                question: "What is the capital of France?",
+                additional_info: "Asking for trivia night",
                 category: "History",
                 user_id: 1
             };
 
+            // CREATE PUT REQUEST
             const response = await request(SERVER)
                 .put(`/questions/${question_id}`)
                 .send(PUT_DATA);
 
+            // ASSERTIONS
             expect(response.status).toBe(201);
             expect(response.body.message).toBe("Question updated successfully!");
         });
@@ -131,18 +156,31 @@ describe("/answers", () => {
     /* ADD ANSWER */
     describe("POST /answers", () => {
         test("should add a new answer and respond with a status code of 201", async () => {
-            const POST_DATA = create({
-                answer: "Thanks! This worked for me.",
+            const ANSWER_DATA = create({
+                answer: "NEW ANSWER",
                 question_id: 1,
-                user_id: 1,
-                display_name: "Mike Johnson"
+                user_id: 2,
+                display_name: "Jane Smith"
             });
 
-            const response = request(SERVER).post("/answers");
+            const POST_DATA = {
+                answer: "NEW ANSWER",
+                question_id: 1,
+                user_id: 2,
+                display_name: "Jane Smith"
+            };
+
+            // CREATE POST REQUEST
+            const response = request(SERVER)
+                .post("/answers")
+                .send(POST_DATA);
+
+            // ASSERTIONS
             expect((await response).statusCode).toBe(201);
-            expect((await response).body.answer).toBe(POST_DATA.answer);
-            expect((await response).body.user_id).toBe(POST_DATA.user_id);
-            expect((await response).body.display_name).toBe(POST_DATA.display_name);
+            expect((await response).body.answer).toBe(ANSWER_DATA.answer);
+            expect((await response).body.question_id).toBe(ANSWER_DATA.question_id);
+            expect((await response).body.user_id).toBe(ANSWER_DATA.user_id);
+            expect((await response).body.display_name).toBe(ANSWER_DATA.display_name);
         });
     });
 
@@ -151,16 +189,18 @@ describe("/answers", () => {
         test("should update a answer and return a response of 201", async () => {
             const answer_id = 2;
             const PUT_DATA = {
-                answer: "Running tests!",
+                answer: "UPDATED ANSWER",
                 question_id: 1,
                 user_id: 3,
                 display_name: "Mike Johnson"
             };
 
+            // CREATE PUT REQUEST
             const response = await request(SERVER)
                 .put(`/answers/${answer_id}`)
                 .send(PUT_DATA);
 
+            // ASSERTIONS
             expect(response.status).toBe(201);
             expect(response.body.message).toBe("Answer updated successfully!");
         });
@@ -185,17 +225,28 @@ describe("/comments", () => {
     /* ADD COMMENT */
     describe("POST /comments", () => {
         test("should add a new comment and respond with a status code of 201", async () => {
-            const POST_DATA = create({
-                comment: "I agree it's easier to learn",
+            const COMMENT_DATA = {
+                comment: "NEW COMMENT",
                 answer_id: 1,
                 user_id: 1
-            });
+            };
 
-            const response = request(SERVER).post("/comments");
+            const POST_DATA = {
+                comment: "NEW COMMENT",
+                answer_id: 1,
+                user_id: 1
+            };
+
+            // CREATE POST REQUEST
+            const response = request(SERVER)
+                .post("/comments")
+                .send(POST_DATA);
+
+            // ASSERTIONS
             expect((await response).statusCode).toBe(201);
-            expect((await response).body.comment).toBe(POST_DATA.comment);
-            expect((await response).body.answer_id).toBe(POST_DATA.answer_id);
-            expect((await response).body.user_id).toBe(POST_DATA.user_id);
+            expect((await response).body.comment).toBe(COMMENT_DATA.comment);
+            expect((await response).body.answer_id).toBe(COMMENT_DATA.answer_id);
+            expect((await response).body.user_id).toBe(COMMENT_DATA.user_id);
         });
     });
 
@@ -204,17 +255,21 @@ describe("/comments", () => {
         test("should update a comment and return a response of 201", async () => {
             const comment_id = 2;
             const PUT_DATA = {
-                comment: "Running tests!",
+                comment: "UPDATED COMMENT",
                 answer_id: 1,
                 user_id: 1
             };
 
+            // CREATE PUT REQUEST
             const response = await request(SERVER)
                 .put(`/comments/${comment_id}`)
                 .send(PUT_DATA);
 
+            // ASSERTION
             expect(response.status).toBe(201);
             expect(response.body.message).toBe("Comment updated successfully!");
         });
     });
+
+
 });
