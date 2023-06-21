@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { GET_USER_EMAIL } from "../controllers/mailer";
 import { RESET_PASSWORD } from "../controllers/reset-password";
-import { VERIFY_TOKEN } from "../middleware/VERIFY_TOKENT";
+import { VERIFY_TOKEN } from "../middleware/VERIFY_TOKEN";
 
 /* INITIALIZE ROUTES */
 const resetRouter = Router();

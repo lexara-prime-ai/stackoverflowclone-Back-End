@@ -3,12 +3,13 @@
 ###########################
 
 #### SIGN IN USER ####
+### NEW PASSWORD: newPWD2023#
 POST http://localhost:8000/auth/sign-in
 Content-Type: application/json
 
 {
     "email": "stacknewbie@gmail.com",
-    "password": "MocPeydwimOkBe3"
+    "password": "newPWD2023#" 
 }
 
 #### GET ALL USERS ####

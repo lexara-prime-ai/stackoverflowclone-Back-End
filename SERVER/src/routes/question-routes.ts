@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { getQuestions, getQuestionById, addQuestion, updateQuestion, deleteQuestion } from "../controllers/question-controller";
-import { VERIFY_TOKEN } from "../middleware/VERIFY_TOKENT";
+import { VERIFY_TOKEN } from "../middleware/VERIFY_TOKEN";
 
 /* INITIALIZE ROUTER */
 const questionRoutes = Router();

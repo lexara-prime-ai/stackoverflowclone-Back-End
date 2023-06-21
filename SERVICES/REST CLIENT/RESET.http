@@ -28,7 +28,7 @@ GET http://localhost:4000/reset/stacknewbie@gmail.com
 ### RESET PASSWORD ###
 PUT http://localhost:4000/reset/password/stacknewbie@gmail.com
 Content-Type: application/json
-TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMDAyLCJkaXNwbGF5X25hbWUiOiJhZG1pbiIsImVtYWlsIjoic3RhY2tuZXdiaWVAZ21haWwuY29tIiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzMzODc2MiwiZXhwIjoxNjg3Njk4NzYyfQ.ivGel72oDVKZN9UG5sIO08Ft2p4xet_boDkB4kpwaYs
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJkaXNwbGF5X25hbWUiOiJhZG1pbiIsImVtYWlsIjoic3RhY2tuZXdiaWVAZ21haWwuY29tIiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzM3MTk4OSwiZXhwIjoxNjg3NzMxOTg5fQ.rG77tyxUXD8qm6SSoEOBFGbkUfTNpddzK3V_ne90qHY
 
 {
     "email": "stacknewbie@gmail.com",

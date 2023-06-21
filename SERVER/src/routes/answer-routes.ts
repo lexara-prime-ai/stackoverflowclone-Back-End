@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { addAnswer, deleteAnswer, downVoteAnswer, getAnswerById, getAnswers, upVoteAnswer, updateAnswer } from "../controllers/answer-controller";
-import { VERIFY_TOKEN } from "../middleware/VERIFY_TOKENT";
+import { VERIFY_TOKEN } from "../middleware/VERIFY_TOKEN";
 
 /* INITIALIZE ROUTE */
 const answerRoutes = Router();

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { addComment, deleteComment, getCommentById, getComments, updateComment } from '../controllers/comment-controller';
-import { VERIFY_TOKEN } from '../middleware/VERIFY_TOKENT';
+import { VERIFY_TOKEN } from '../middleware/VERIFY_TOKEN';
 
 /* INITIALIZE ROUTER */
 const commentRoutes = Router();
