@@ -35,10 +35,14 @@ SERVER.use('/answers', answerRoutes);
 SERVER.use('/comments', commentRoutes);
 
 SERVER.get('/', (req, res) => {
-    res.send("Server is running...");
+    res.send("Server is running..."); 
 })
 
 SERVER.listen(PORT, () => console.log(`
+
+█▀ ▀█▀ ▄▀█ █▀█ ▀█▀ █ █▄░█ █▀▀ ░ ░
+▄█ ░█░ █▀█ █▀▄ ░█░ █ █░▀█ █▄█ ▄ ▄
+
 ***********************************************
 Server is running at: http://localhost:${PORT}
 Terminate process : CTRL + C

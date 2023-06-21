@@ -1,0 +1,13 @@
+###########################
+######## ENDPOINTS ########
+###########################
+
+### SIGN UP USER ###
+POST http://localhost:5000/sign-up
+Content-Type: application/json
+
+{
+    "display_name": "irfanghat",
+    "email": "irfanghat@gmail.com",
+    "password": "freedom"
+}

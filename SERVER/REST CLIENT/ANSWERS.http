@@ -11,17 +11,19 @@ GET http://localhost:8000/answers/1
 #### ADD ANSWER ####
 POST http://localhost:8000/answers 
 Content-Type: application/json
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJhZG1pbiIsImVtYWlsIjoic3RhY2tuZXdiaWVAZ21haWwuY29tIiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzM1MTU5OCwiZXhwIjoxNjg3NzExNTk4fQ.oB5LwOlBgJvQNfMgNiinlSENQytDciOIgu5PM1rCurk
 
 {
-    "answer": "It helps with clarity of mind and physical health as well.",
+    "answer": "I agree with Emily, It is highly benefitial for your overall well being.",
     "question_id": 3,
-    "user_id": 4,
-    "display_name": "Emily Brown"
+    "user_id": 6,
+    "display_name": "irfanghat"
 }
 
 #### UPDATE ANSWER ####
 PUT http://localhost:8000/answers/1
 Content-Type: application/json
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM
 
 {
     "answer": "It helps with clarity of mind as well as physical health.",
@@ -32,3 +34,26 @@ Content-Type: application/json
 
 #### DELETE ANSWER ####
 DELETE http://localhost:8000/answers/6
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM
+
+### UPVOTE ANSWER ###
+### TAKES AN answer_id AS A PARAMETER
+POST http://localhost:8000/answers/upvote/4
+Content-Type: application/json
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM
+
+{
+    "user_id": 3,
+    "vote_type": "upvote"
+}
+
+### DOWNVOTE ANSWER ###
+### TAKES AN answer_id AS A PARAMETER
+POST http://localhost:8000/answers/downvote/4
+Content-Type: application/json
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM
+
+{
+    "user_id": 1,
+    "vote_type": "downvote"
+}

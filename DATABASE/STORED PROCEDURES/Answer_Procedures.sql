@@ -90,7 +90,67 @@ END
 
 EXEC deleteAnswer 7
 
+--##########################################
+--GET A USER'S ANSWER BASED ON THE answer_id
+--##########################################
+CREATE OR ALTER PROCEDURE GetUserAnswer
+    @answer_id INT
+AS
+BEGIN
+    SELECT a.answer_id, a.answer, a.question_id, u.user_id, u.display_name AS answered_by, u.email, a.preferred
+    FROM Answers a
+    JOIN Users u ON a.user_id = u.user_id
+    WHERE a.answer_id = @answer_id;
+END;
+
+EXEC GetUserAnswer @answer_id=2
 
 
+--########################
+--UPDATE ANSWER PREFERENCE
+--########################
+CREATE OR ALTER PROCEDURE UpdatePreference
+    @answer_id INT
+AS
+BEGIN
+    IF (SELECT preferred FROM Answers WHERE answer_id = @answer_id) = 0
+    BEGIN
+        UPDATE Answers
+        SET preferred = 1
+        WHERE answer_id = @answer_id; 
+    END;
+END;
+
+EXEC UpdatePreference @answer_id=2
+
+
+--##########################################
+--CREATE PROCEDURE FOR INCREASING VOTE COUNT
+--##########################################
+CREATE OR ALTER PROCEDURE IncreaseAnswerVoteCount
+    @answer_id INT
+AS
+BEGIN
+    UPDATE Answers
+    SET vote_count = vote_count + 1
+    WHERE answer_id = @answer_id;
+END;
+
+EXEC UpdateAnswerVoteCount @answer_id=1
+
+--##########################################
+--CREATE PROCEDURE FOR DECREASING VOTE COUNT
+--##########################################
+CREATE OR ALTER PROCEDURE DecreaseAnswerVoteCount
+    @answer_id INT
+AS
+BEGIN
+    UPDATE Answers
+    SET vote_count = vote_count - 1
+    WHERE answer_id = @answer_id;
+END;
+
+EXEC DecreaseAnswerVoteCount @answer_id=1
+ 
 --VIEW UPDATED TABLE
 SELECT * FROM Answers

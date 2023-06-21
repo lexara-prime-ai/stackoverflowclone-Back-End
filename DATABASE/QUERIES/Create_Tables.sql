@@ -32,6 +32,8 @@ CREATE TABLE Answers (
     user_id INT,
     display_name VARCHAR(255),
 	deleted INT DEFAULT 0,
+	preferred INT DEFAULT 0,
+	vote_count INT DEFAULT 0,
     FOREIGN KEY (question_id) REFERENCES Questions(question_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (display_name) REFERENCES Users(display_name)
@@ -48,10 +50,16 @@ CREATE TABLE Comments
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
-CREATE TABLE Votes
-(
+CREATE TABLE Votes (
     vote_id INT IDENTITY(1, 1) PRIMARY KEY,
-    vote_count INT,
     answer_id INT,
-    FOREIGN KEY (answer_id) REFERENCES Answers(answer_id)
+    user_id INT,
+    vote_type VARCHAR(10),
+    CONSTRAINT UC_Votes UNIQUE (answer_id, user_id)
 );
+
+ALTER TABLE Votes
+ADD CONSTRAINT FK_Votes_Answers FOREIGN KEY (answer_id) REFERENCES Answers(answer_id);
+
+ALTER TABLE Votes
+ADD CONSTRAINT FK_Votes_Users FOREIGN KEY (user_id) REFERENCES Users(user_id);

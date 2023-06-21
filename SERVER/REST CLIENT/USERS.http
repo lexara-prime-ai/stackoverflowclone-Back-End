@@ -7,13 +7,12 @@ POST http://localhost:8000/auth/sign-in
 Content-Type: application/json
 
 {
-    "email": "peterparker@hotmail.eu",
-    "password": "spid3rman"
+    "email": "stacknewbie@gmail.com",
+    "password": "MocPeydwimOkBe3"
 }
 
 #### GET ALL USERS ####
 GET http://localhost:8000/users
-
 
 #### GET USER BY ID ####
 GET http://localhost:8000/users/3
@@ -23,9 +22,9 @@ POST http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "display_name": "pizza_time",
-    "email": "peterparker@hotmail.eu",
-    "password": "spid3rman"
+    "display_name": "admin",
+    "email": "stacknewbie@gmail.com",
+    "password": "MocPeydwimOkBe3"
 }
 
 #### UPDATE USER ####

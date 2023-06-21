@@ -1,3 +1,5 @@
+USE StackNewbie
+GO
 --################
 --SELECT ALL Users
 --################

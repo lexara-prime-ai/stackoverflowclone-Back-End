@@ -12,6 +12,7 @@ GET http://localhost:8000/questions/3
 #### ADD QUESTION ####
 POST http://localhost:8000/questions
 Content-Type: application/json
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM
 
 {
     "question": "What is the .NET framework",
@@ -23,6 +24,7 @@ Content-Type: application/json
 #### UPDATE QUESTION ####
 PUT http://localhost:8000/questions/7
 Content-Type: application/json
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM
 
 {
     "question": "What is the C#.NET framework",
@@ -33,3 +35,4 @@ Content-Type: application/json
 
 #### DELETE QUESTION ####
 DELETE http://localhost:8000/questions/2
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM

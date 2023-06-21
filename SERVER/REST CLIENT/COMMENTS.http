@@ -11,6 +11,7 @@ GET http://localhost:8000/comments/1
 #### ADD COMMENT ####
 POST http://localhost:8000/comments 
 Content-Type: application/json
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM
 
 {
     "comment": "Thanks a lot Sherlock.",
@@ -21,6 +22,7 @@ Content-Type: application/json
 #### UPDATE COMMENT ####
 PUT http://localhost:8000/comments/1
 Content-Type: application/json
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM
 
 {
     "comment": "Thanks for the clear and concise answer!",
@@ -30,3 +32,4 @@ Content-Type: application/json
 
 #### DELETE COMMENT ####
 DELETE http://localhost:8000/comments/6
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM

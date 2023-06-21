@@ -2,6 +2,7 @@
 import { Request, Response } from 'express';
 /* CUSTOM MODULES */
 import { DB_OPERATIONS } from '../helpers/DB-OPERATIONS';
+import { QUESTION_MODEL } from '../interfaces/types';
 
 
 /* EXPORT MODULE | getQuestions */
@@ -38,17 +39,20 @@ export const getQuestionById = async (req: Request<{ question_id: string }>, res
 }
 
 /* EXPORT MODULE | addQuestion */
-export const addQuestion = async (req: Request, res: Response) => {
+export const addQuestion = async (req: QUESTION_MODEL, res: Response) => {
     try {
         /* READ Request BODY */
         const { question, additional_info, category, user_id } = req.body;
 
-        await DB_OPERATIONS.EXECUTE('addQuestion', {
-            question,
-            additional_info,
-            category,
-            user_id
-        });
+        /* CHECK IF TOKEN EXISTS */
+        if (req.info) {
+            await DB_OPERATIONS.EXECUTE('addQuestion', {
+                question,
+                additional_info,
+                category,
+                user_id
+            });
+        }
 
         /* SUCCESS STATE */
         res.status(201).json({

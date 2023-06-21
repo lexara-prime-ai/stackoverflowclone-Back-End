@@ -103,9 +103,9 @@ VALUES ('Thanks for the explanation!', 4, 2);
 --INSERTING VOTES
 --################
 -- Inserting an upvote for an answer by a user
-INSERT INTO Votes (vote_count, answer_id)
-VALUES (1, 3);
+INSERT INTO Votes (answer_id, user_id, vote_type)
+VALUES (2, 2, 'upvote');
 
 -- Inserting a downvote for a different answer by a different user
-INSERT INTO Votes (vote_count, answer_id)
-VALUES (-1, 4);
+INSERT INTO Votes (answer_id, user_id, vote_type)
+VALUES (1, 1, 'downvote'); 

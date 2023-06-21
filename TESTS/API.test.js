@@ -2,6 +2,21 @@ const request = require('supertest');
 const create = require('supertest');
 const SERVER = require('../SERVER/build/server');
 
+/* GENERATE NEW TOKEN */
+let TOKEN = '';
+
+beforeAll(async () => {
+    const POST_DATA = {
+        email: "peterparker@hotmail.eu",
+        password: "spid3rman"
+    };
+
+    const response = request(SERVER)
+        .post('/auth/sign-in')
+        .send(POST_DATA);
+    TOKEN = ((await response).body);
+});
+
 /************* USERS *************/
 describe("/users", () => {
     /* GET ALL USERS */
@@ -21,7 +36,7 @@ describe("/users", () => {
     describe("POST /users", () => {
         test("should add a new user and respond with a status code of 201", async () => {
             // WILL FAIL IF display_name
-            // AND email EXISTS AS A 
+            // AND email EXISTS AS A
             // RESULT OF UNIQUE CONSTRAINTS
             const USER_DATA = create({
                 display_name: "NEW TEST USER",
@@ -38,6 +53,7 @@ describe("/users", () => {
             // CREATE POST REQUEST
             const response = request(SERVER)
                 .post("/users")
+                .set("TOKEN", TOKEN)
                 .send(POST_DATA);
 
             // ASSERTIONS
@@ -61,6 +77,7 @@ describe("/users", () => {
             // CREATE PUT REQUEST
             const response = await request(SERVER)
                 .put(`/users/${user_id}`)
+                .set("TOKEN", TOKEN)
                 .send(PUT_DATA);
 
             // ASSERTIONS
@@ -105,6 +122,7 @@ describe("/questions", () => {
             // CREATE POST REQUEST
             const response = request(SERVER)
                 .post("/questions")
+                .set("TOKEN", TOKEN)
                 .send(POST_DATA);
 
             // ASSERTIONS
@@ -129,6 +147,7 @@ describe("/questions", () => {
             // CREATE PUT REQUEST
             const response = await request(SERVER)
                 .put(`/questions/${question_id}`)
+                .set("TOKEN", TOKEN)
                 .send(PUT_DATA);
 
             // ASSERTIONS
@@ -173,6 +192,7 @@ describe("/answers", () => {
             // CREATE POST REQUEST
             const response = request(SERVER)
                 .post("/answers")
+                .set("TOKEN", TOKEN)
                 .send(POST_DATA);
 
             // ASSERTIONS
@@ -198,6 +218,7 @@ describe("/answers", () => {
             // CREATE PUT REQUEST
             const response = await request(SERVER)
                 .put(`/answers/${answer_id}`)
+                .set("TOKEN", TOKEN)
                 .send(PUT_DATA);
 
             // ASSERTIONS
@@ -240,6 +261,7 @@ describe("/comments", () => {
             // CREATE POST REQUEST
             const response = request(SERVER)
                 .post("/comments")
+                .set("TOKEN", TOKEN)
                 .send(POST_DATA);
 
             // ASSERTIONS
@@ -263,6 +285,7 @@ describe("/comments", () => {
             // CREATE PUT REQUEST
             const response = await request(SERVER)
                 .put(`/comments/${comment_id}`)
+                .set("TOKEN", TOKEN)
                 .send(PUT_DATA);
 
             // ASSERTION

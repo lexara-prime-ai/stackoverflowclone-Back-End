@@ -165,7 +165,7 @@ export const signInUser = async (req: Request, res: Response) => {
         });
 
         /* GENERATE TOKEN AND ASSIGN IT TO A USER */
-        const TOKEN = JWT.sign(payload[0], "8usbAjedEfLF7yxtdSXEyQCoJveY7PrL", { expiresIn: '360000s' });
+        const TOKEN = JWT.sign(payload[0], process.env.SECRET_KEY as string, { expiresIn: '360000s' });
 
         return res.status(200).json({
             message: 'User signed in successfully!',

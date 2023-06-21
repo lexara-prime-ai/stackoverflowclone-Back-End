@@ -73,10 +73,10 @@ export const updateAnswer = async (req: Request, res: Response) => {
         }
 
         /* PROCEED WITH UPDATE IF COMMENT EXISTS */
-        const { answer, question_id, user_id, display_name  } = req.body;
+        const { answer, question_id, user_id, display_name } = req.body;
 
         await DB_OPERATIONS.EXECUTE('updateAnswer', {
-            answer_id, question_id, answer, user_id, display_name 
+            answer_id, question_id, answer, user_id, display_name
         });
 
         /* SUCCESS STATE */
@@ -109,6 +109,66 @@ export const deleteAnswer = async (req: Request, res: Response) => {
         res.status(200).json({
             message: 'Answer deleted!'
         });
+    } catch (error: any) {
+        res.status(500).json(`ERROR: ${error.message}`);
+    }
+}
+
+/* EXPORT MODULE | upvoteAnswer */
+export const upVoteAnswer = async (req: Request, res: Response) => {
+    try {
+        /* GET answer_id */
+        const { answer_id } = req.params;
+        /* READ req.body */
+        const { user_id, vote_type } = req.body;
+
+        /* INSERT VOTE */
+        await DB_OPERATIONS.EXECUTE('InsertVote', {
+            answer_id,
+            user_id,
+            vote_type
+        });
+
+        /* INCREASE VOTE COUNT */
+        await DB_OPERATIONS.EXECUTE('IncreaseAnswerVoteCount', {
+            answer_id
+        });
+
+        /* SUCCESS STATE */
+        res.status(200).json({
+            message: 'Answer upvoted!'
+        });
+
+    } catch (error: any) {
+        res.status(500).json(`ERROR: ${error.message}`);
+    }
+}
+
+/* EXPORT MODULE | upvoteAnswer */
+export const downVoteAnswer = async (req: Request, res: Response) => {
+    try {
+        /* GET answer_id */
+        const { answer_id } = req.params;
+        /* READ req.body */
+        const { user_id, vote_type } = req.body;
+
+        /* INSERT VOTE */
+        await DB_OPERATIONS.EXECUTE('InsertVote', {
+            answer_id,
+            user_id,
+            vote_type
+        });
+
+        /* INCREASE VOTE COUNT */
+        await DB_OPERATIONS.EXECUTE('decreaseAnswerVoteCount', {
+            answer_id
+        });
+
+        /* SUCCESS STATE */
+        res.status(200).json({
+            message: 'Answer downvoted!'
+        });
+
     } catch (error: any) {
         res.status(500).json(`ERROR: ${error.message}`);
     }

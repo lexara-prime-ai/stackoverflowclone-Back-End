@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\QUERIES"
   ],
-  "SelectedNode": "\\Drop_Tables.sql",
+  "SelectedNode": "\\QUERIES\\Create_Database.sql",
   "PreviewInSolutionExplorer": false
 }

@@ -47,8 +47,6 @@ END
 EXEC getUserByEmail @email='updated@gmail.com'
 
 
-
-
 --########################################
 --CREATE STORED PROCEDURE FOR ADDING USERS 
 --########################################
