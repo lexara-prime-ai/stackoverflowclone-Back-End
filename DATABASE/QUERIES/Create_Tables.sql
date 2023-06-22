@@ -22,12 +22,12 @@ CREATE TABLE Questions
     category VARCHAR(255),
 	deleted INT DEFAULT 0,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON UPDATE CASCADE
 );
 
 CREATE TABLE Answers (
     answer_id INT IDENTITY(1, 1) PRIMARY KEY,
-    answer VARCHAR(255),
+    answer VARCHAR(255) NOT NULL,
     question_id INT,
     user_id INT,
     display_name VARCHAR(255),
@@ -36,13 +36,13 @@ CREATE TABLE Answers (
 	vote_count INT DEFAULT 0,
     FOREIGN KEY (question_id) REFERENCES Questions(question_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (display_name) REFERENCES Users(display_name)
+    FOREIGN KEY (display_name) REFERENCES Users(display_name) ON UPDATE CASCADE
 );
 
 CREATE TABLE Comments
 (
     comment_id INT IDENTITY(1, 1) PRIMARY KEY,
-    comment VARCHAR(255),
+    comment VARCHAR(255) NOT NULL,
     answer_id INT,
     user_id INT,
 	deleted INT DEFAULT 0,

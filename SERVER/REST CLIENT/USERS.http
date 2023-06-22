@@ -8,28 +8,60 @@ POST http://localhost:8000/auth/sign-in
 Content-Type: application/json
 
 {
-    "email": "stacknewbie@gmail.com",
-    "password": "newPWD2023#" 
+    "email": "jonathanndambuki16@gmail.com",
+    "password": "password"
 }
 
 #### GET ALL USERS ####
 GET http://localhost:8000/users
 
 #### GET USER BY ID ####
-GET http://localhost:8000/users/3
+GET http://localhost:8000/users/4
 
-#### ADD USER ####
+#### ADD USER #### no.1
 POST http://localhost:8000/users
 Content-Type: application/json
 
 {
     "display_name": "admin",
     "email": "stacknewbie@gmail.com",
-    "password": "MocPeydwimOkBe3"
+    "password": "admin"
 }
 
+### ADD USER no.2
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "display_name": "pizza_time",
+    "email": "peter@gmail.com",
+    "password": "password"
+}
+
+### ADD USER no.3
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "display_name": "irfanghat",
+    "email": "irfanghat@gmail.com",
+    "password": "password"
+}
+
+### ADD USER no.4
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "display_name": "dragon_fly_man",
+    "email": "dfm@gmail.com",
+    "password": "password"
+}
+
+###*********** END ************###
+
 #### UPDATE USER ####
-PUT http://localhost:8000/users/6
+PUT http://localhost:8000/users/2
 Content-Type: application/json
 
 {

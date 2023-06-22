@@ -21,17 +21,17 @@
 # THE FOLLOWING REQUEST WITH SEND AN EMAIL WITH A RESET LINK
 
 ### REQUEST PASSWORD RESET ###
-GET http://localhost:4000/reset/stacknewbie@gmail.com
+GET http://localhost:4000/reset/jonathanndambuki16@gmail.com
 
 # RESET PASSWORD ENDPOINT : /reset/password/:email
 
 ### RESET PASSWORD ###
-PUT http://localhost:4000/reset/password/stacknewbie@gmail.com
+PUT http://localhost:4000/reset/password/jonathanndambuki16@gmail.com
 Content-Type: application/json
 TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJkaXNwbGF5X25hbWUiOiJhZG1pbiIsImVtYWlsIjoic3RhY2tuZXdiaWVAZ21haWwuY29tIiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzM3MTk4OSwiZXhwIjoxNjg3NzMxOTg5fQ.rG77tyxUXD8qm6SSoEOBFGbkUfTNpddzK3V_ne90qHY
 
 {
-    "email": "stacknewbie@gmail.com",
-    "password": "newPWD2023#"
+    "email": "jonathanndambuki16@gmail.com",
+    "password": "new_password"
 }
 

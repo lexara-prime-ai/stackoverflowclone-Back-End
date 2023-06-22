@@ -18,7 +18,7 @@ TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiO
     "question": "What is the .NET framework",
     "additional_info": "Learning about C#",
     "category": "c#",
-    "user_id": 5
+    "user_id": 2
 }
 
 #### UPDATE QUESTION ####
@@ -27,10 +27,10 @@ Content-Type: application/json
 TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM
 
 {
-    "question": "What is the C#.NET framework",
+    "question": "What's the C#.NET framework",
     "additional_info": "Would like to know the difference",
     "category": "c#",
-    "user_id": 5
+    "user_id": 2
 }
 
 #### DELETE QUESTION ####
