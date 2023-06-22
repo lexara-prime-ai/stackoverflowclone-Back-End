@@ -35,3 +35,15 @@ TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJkaXNwbGF5X25hbWUiO
     "password": "new_password"
 }
 
+### REQUEST PASSWORD RESET ###
+GET http://localhost:4000/reset/guitarhonest@gmail.com
+
+### RESET PASSWORD ###
+PUT http://localhost:4000/reset/password/guitarhonest@gmail.com
+Content-Type: application/json
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJkaXNwbGF5X25hbWUiOiJhZG1pbiIsImVtYWlsIjoic3RhY2tuZXdiaWVAZ21haWwuY29tIiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzM3MTk4OSwiZXhwIjoxNjg3NzMxOTg5fQ.rG77tyxUXD8qm6SSoEOBFGbkUfTNpddzK3V_ne90qHY
+
+{
+    "email": "guitarhonest@gmail.com",
+    "password": "new_password"
+}

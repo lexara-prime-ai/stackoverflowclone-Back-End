@@ -12,10 +12,10 @@ GET http://localhost:8000/questions/3
 #### ADD QUESTION ####
 POST http://localhost:8000/questions
 Content-Type: application/json
-TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiZGlzcGxheV9uYW1lIjoibm90X2FfcmFwcGVyIiwiZW1haWwiOiJndWl0YXJob25lc3RAZ21haWwuY29tIiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzQyMjQ5OSwiZXhwIjoxNjg3NzgyNDk5fQ.UOQ32csRLVOUMf6BbvpzF_N-aU4FfyaDCUbEJRcgPkM
 
 {
-    "question": "What is the .NET framework",
+    "question": "Once again, what is the .NET framework",
     "additional_info": "Learning about C#",
     "category": "c#",
     "user_id": 2
@@ -24,10 +24,10 @@ TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiO
 #### UPDATE QUESTION ####
 PUT http://localhost:8000/questions/7
 Content-Type: application/json
-TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiZGlzcGxheV9uYW1lIjoibm90X2FfcmFwcGVyIiwiZW1haWwiOiJndWl0YXJob25lc3RAZ21haWwuY29tIiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzQyMjQ5OSwiZXhwIjoxNjg3NzgyNDk5fQ.UOQ32csRLVOUMf6BbvpzF_N-aU4FfyaDCUbEJRcgPkM
 
 {
-    "question": "What's the C#.NET framework",
+    "question": "What is the C#.NET framework",
     "additional_info": "Would like to know the difference",
     "category": "c#",
     "user_id": 2
@@ -35,4 +35,4 @@ TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiO
 
 #### DELETE QUESTION ####
 DELETE http://localhost:8000/questions/2
-TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJkaXNwbGF5X25hbWUiOiJwaXp6YV90aW1lIiwiZW1haWwiOiJwZXRlcnBhcmtlckBob3RtYWlsLmV1IiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzI2ODAyNCwiZXhwIjoxNjg3NjI4MDI0fQ.MWzytOABgxKRlOEpoeWQnuN9KcAqiW1_zxoRyJuErFM
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiZGlzcGxheV9uYW1lIjoibm90X2FfcmFwcGVyIiwiZW1haWwiOiJndWl0YXJob25lc3RAZ21haWwuY29tIiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzQyMjQ5OSwiZXhwIjoxNjg3NzgyNDk5fQ.UOQ32csRLVOUMf6BbvpzF_N-aU4FfyaDCUbEJRcgPkM

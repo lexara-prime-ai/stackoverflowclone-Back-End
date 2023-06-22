@@ -11,3 +11,13 @@ Content-Type: application/json
     "email": "jonathanndambuki16@gmail.com",
     "password": "password"
 }
+
+### SIGN UP USER ###
+POST http://localhost:5000/sign-up
+Content-Type: application/json
+
+{
+    "display_name": "not_a_rapper",
+    "email": "guitarhonest@gmail.com",
+    "password": "password"
+}

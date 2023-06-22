@@ -12,6 +12,16 @@ Content-Type: application/json
     "password": "password"
 }
 
+#### SIGN IN USER ####
+POST http://localhost:8000/auth/sign-in
+Content-Type: application/json
+
+{
+    "email": "guitarhonest@gmail.com",
+    "password": "new_password"
+}
+
+
 #### GET ALL USERS ####
 GET http://localhost:8000/users
 
