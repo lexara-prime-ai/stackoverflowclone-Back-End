@@ -11,13 +11,13 @@ GET http://localhost:8000/answers/1
 #### ADD ANSWER ####
 POST http://localhost:8000/answers 
 Content-Type: application/json
-TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiZGlzcGxheV9uYW1lIjoibm90X2FfcmFwcGVyIiwiZW1haWwiOiJndWl0YXJob25lc3RAZ21haWwuY29tIiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzQyMjQ5OSwiZXhwIjoxNjg3NzgyNDk5fQ.UOQ32csRLVOUMf6BbvpzF_N-aU4FfyaDCUbEJRcgPkM
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMiwiZGlzcGxheV9uYW1lIjoiam9uYXRoYW5fbmRhbWJ1a2kiLCJlbWFpbCI6ImpvbmF0aGFubmRhbWJ1a2kxNkBnbWFpbC5jb20iLCJlbWFpbGVkIjowLCJkZWxldGVkIjowLCJhZG1pbiI6MCwiaWF0IjoxNjg3NDI4MjI5LCJleHAiOjE2ODc3ODgyMjl9.qKJxDrLCZbk3T5nocnOac8D9PJ9puUjNzUe0xIGkpOQ
 
 {
     "answer": "I agree with Emily, It is highly benefitial for your overall well being.",
-    "question_id": 3,
-    "user_id": 3,
-    "display_name": "irfanghat"
+    "question_id": 23,
+    "user_id": 12,
+    "display_name": "jonathan_ndambuki"
 }
 
 #### UPDATE ANSWER ####
@@ -40,20 +40,20 @@ TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiZGlzcGxheV9uYW1lI
 ### TAKES AN answer_id AS A PARAMETER
 POST http://localhost:8000/answers/upvote/7
 Content-Type: application/json
-TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiZGlzcGxheV9uYW1lIjoibm90X2FfcmFwcGVyIiwiZW1haWwiOiJndWl0YXJob25lc3RAZ21haWwuY29tIiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzQyMjQ5OSwiZXhwIjoxNjg3NzgyNDk5fQ.UOQ32csRLVOUMf6BbvpzF_N-aU4FfyaDCUbEJRcgPkM
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMiwiZGlzcGxheV9uYW1lIjoiam9uYXRoYW5fbmRhbWJ1a2kiLCJlbWFpbCI6ImpvbmF0aGFubmRhbWJ1a2kxNkBnbWFpbC5jb20iLCJlbWFpbGVkIjowLCJkZWxldGVkIjowLCJhZG1pbiI6MCwiaWF0IjoxNjg3NDI4MjI5LCJleHAiOjE2ODc3ODgyMjl9.qKJxDrLCZbk3T5nocnOac8D9PJ9puUjNzUe0xIGkpOQ
 
 {
-    "user_id": 3,
+    "user_id": 12,
     "vote_type": "upvote"
 }
 
 ### DOWNVOTE ANSWER ###
 ### TAKES AN answer_id AS A PARAMETER
-POST http://localhost:8000/answers/downvote/4
+POST http://localhost:8000/answers/downvote/7
 Content-Type: application/json
-TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiZGlzcGxheV9uYW1lIjoibm90X2FfcmFwcGVyIiwiZW1haWwiOiJndWl0YXJob25lc3RAZ21haWwuY29tIiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzQyMjQ5OSwiZXhwIjoxNjg3NzgyNDk5fQ.UOQ32csRLVOUMf6BbvpzF_N-aU4FfyaDCUbEJRcgPkM
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMiwiZGlzcGxheV9uYW1lIjoiam9uYXRoYW5fbmRhbWJ1a2kiLCJlbWFpbCI6ImpvbmF0aGFubmRhbWJ1a2kxNkBnbWFpbC5jb20iLCJlbWFpbGVkIjowLCJkZWxldGVkIjowLCJhZG1pbiI6MCwiaWF0IjoxNjg3NDI4MjI5LCJleHAiOjE2ODc3ODgyMjl9.qKJxDrLCZbk3T5nocnOac8D9PJ9puUjNzUe0xIGkpOQ
 
 {
-    "user_id": 1,
+    "user_id": 12,
     "vote_type": "downvote"
 }

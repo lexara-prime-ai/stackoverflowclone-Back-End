@@ -9,7 +9,7 @@ Content-Type: application/json
 
 {
     "email": "jonathanndambuki16@gmail.com",
-    "password": "password"
+    "password": "new_password"
 }
 
 #### SIGN IN USER ####
@@ -78,6 +78,16 @@ Content-Type: application/json
     "display_name": "Jake Jillan",
     "email": "jakejillan@example.com",
     "password": "jake's password"
+}
+
+#### UPDATE USER ####
+PUT http://localhost:8000/users/2
+Content-Type: application/json
+
+{
+    "display_name": "Jonathan Ndambuki",
+    "email": "jonathanndambuki16@gmail.com",
+    "password": "updated_password"
 }
 
 #### DELETE USER ####

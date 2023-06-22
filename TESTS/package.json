@@ -4,7 +4,10 @@
   "description": "Custom test suite for endpoint testing",
   "main": "users-endpoints.test.js",
   "scripts": {
-    "test": "jest --forceExit"
+    "test": "jest --forceExit",
+    "load-test::questions": "artillery quick --count 20 --num 10 http://localhost:8000/questions",
+    "load-test::answers": "artillery quick --count 20 --num 10 http://localhost:8000/answers",
+    "load-test::comments": "artillery quick --count 20 --num 10 http://localhost:8000/comments"
   },
   "author": "Irfan Ghat",
   "license": "ISC",

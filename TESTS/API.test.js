@@ -20,37 +20,37 @@ describe("/users", () => {
         });
     });
 
-    // /* ADD USER */
-    // describe("POST /users", () => {
-    //     test("should add a new user and respond with a status code of 201", async () => {
-    //         // WILL FAIL IF display_name
-    //         // AND email EXISTS AS A
-    //         // RESULT OF UNIQUE CONSTRAINTS
-    //         const USER_DATA = create({
-    //             display_name: "NEW_USER_4",
-    //             email: "new_user_4@gmail.com",
-    //             password: "NEW_USER_4"
-    //         });
+    /* ADD USER */
+    describe("POST /users", () => {
+        test("should add a new user and respond with a status code of 201", async () => {
+            // WILL FAIL IF display_name
+            // AND email EXISTS AS A
+            // RESULT OF UNIQUE CONSTRAINTS
+            const USER_DATA = create({
+                display_name: "NEW_USER_4",
+                email: "new_user_4@gmail.com",
+                password: "NEW_USER_4"
+            });
 
-    //         const POST_DATA = {
-    //             display_name: "NEW_USER_4",
-    //             email: "new_user_4@gmail.com",
-    //             password: "NEW_USER_4"
-    //         };
+            const POST_DATA = {
+                display_name: "NEW_USER_4",
+                email: "new_user_4@gmail.com",
+                password: "NEW_USER_4"
+            };
 
-    //         // CREATE POST REQUEST
-    //         const response = request(SERVER)
-    //             .post("/users")
-    //             .set("Content-type", "application/json")
-    //             .send(POST_DATA);
+            // CREATE POST REQUEST
+            const response = request(SERVER)
+                .post("/users")
+                .set("Content-type", "application/json")
+                .send(POST_DATA);
 
-    //         // ASSERTIONS
-    //         expect((await response).statusCode).toBe(201);
-    //         expect((await response).body.display_name).toBe(USER_DATA.display_name);
-    //         expect((await response).body.email).toBe(USER_DATA.email);
-    //         expect((await response).body.password).toBe(USER_DATA.password);
-    //     });
-    // });
+            // ASSERTIONS
+            expect((await response).statusCode).toBe(201);
+            expect((await response).body.display_name).toBe(USER_DATA.display_name);
+            expect((await response).body.email).toBe(USER_DATA.email);
+            expect((await response).body.password).toBe(USER_DATA.password);
+        });
+    });
 
     /* UPDATE USER */
     describe("PUT /users", () => {

@@ -11,12 +11,12 @@ GET http://localhost:8000/comments/1
 #### ADD COMMENT ####
 POST http://localhost:8000/comments 
 Content-Type: application/json
-TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiZGlzcGxheV9uYW1lIjoibm90X2FfcmFwcGVyIiwiZW1haWwiOiJndWl0YXJob25lc3RAZ21haWwuY29tIiwiZW1haWxlZCI6MCwiZGVsZXRlZCI6MCwiYWRtaW4iOjAsImlhdCI6MTY4NzQyMjQ5OSwiZXhwIjoxNjg3NzgyNDk5fQ.UOQ32csRLVOUMf6BbvpzF_N-aU4FfyaDCUbEJRcgPkM
+TOKEN:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMiwiZGlzcGxheV9uYW1lIjoiam9uYXRoYW5fbmRhbWJ1a2kiLCJlbWFpbCI6ImpvbmF0aGFubmRhbWJ1a2kxNkBnbWFpbC5jb20iLCJlbWFpbGVkIjowLCJkZWxldGVkIjowLCJhZG1pbiI6MCwiaWF0IjoxNjg3NDI4MjI5LCJleHAiOjE2ODc3ODgyMjl9.qKJxDrLCZbk3T5nocnOac8D9PJ9puUjNzUe0xIGkpOQ
 
 {
     "comment": "Thanks a lot Sherlock.",
-    "answer_id": 3,
-    "user_id": 2
+    "answer_id": 19,
+    "user_id": 12
 }
 
 #### UPDATE COMMENT ####
