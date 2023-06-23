@@ -7,9 +7,10 @@ GO
 CREATE OR ALTER PROCEDURE getQuestions
 AS
 BEGIN
-	SELECT *
-	FROM Questions
-	WHERE deleted = 0
+    SELECT Q.*, U.display_name
+    FROM Questions Q
+    JOIN Users U ON Q.user_id = U.user_id
+    WHERE Q.deleted = 0
 END
 
 EXEC getQuestions

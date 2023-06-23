@@ -20,10 +20,12 @@ CREATE TABLE Questions
     question VARCHAR(255),
     additional_info VARCHAR(255),
     category VARCHAR(255),
-	deleted INT DEFAULT 0,
+    deleted INT DEFAULT 0,
     user_id INT,
+    date_created DATE DEFAULT GETDATE(),
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON UPDATE CASCADE
 );
+
 
 CREATE TABLE Answers (
     answer_id INT IDENTITY(1, 1) PRIMARY KEY,
