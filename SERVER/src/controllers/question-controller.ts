@@ -8,36 +8,37 @@ import { QUESTION_MODEL } from '../interfaces/types';
 /* EXPORT MODULE | getQuestions */
 export const getQuestions = async (req: Request, res: Response) => {
     try {
-      let questions = await (await DB_OPERATIONS.EXECUTE('GetQuestionsWithAnswersAndDisplayNames')).recordset;
-  
-      // Format the questions array
-      const formattedQuestions = questions.map((question) => {
-        // Parse the answers field from string to an array of objects
-        const answers = JSON.parse(question.answers);
-  
-        // Format the date_created field to a more human-readable format
-        const dateCreated = new Date(question.date_created);
-        const formattedDate = dateCreated.toLocaleDateString(); // Adjust the formatting according to your preference
-  
-        // Create the formatted question object
-        return {
-          question_id: question.question_id,
-          question: question.question,
-          additional_info: question.additional_info,
-          category: question.category,
-          date_created: formattedDate,
-          question_asker: question.question_asker,
-          answers: answers
-        };
-      });
-  
-      // Send the formatted questions to the frontend
-      res.status(200).json(formattedQuestions);
+
+        let questions = await (await DB_OPERATIONS.EXECUTE('GetQuestionsWithAnswersAndDisplayNames')).recordset;
+
+        // FORMAT THE questions ARRAY
+        const formattedQuestions = questions.map((question) => {
+            // PARSE THE answers FIELD FROM string TO AN array OF objects
+            const answers = JSON.parse(question.answers);
+            // FROMAT THE date_created FIELD
+            const dateCreated = new Date(question.date_created);
+            // PASS IN PARAMETERS TO toLocaleDateString() TO SPECIFY THE
+            // DESIRED FORMAT | Optional
+            const formattedDate = dateCreated.toLocaleDateString();
+            // CREATE THE formattedQuestions OBJECT
+            return {
+                question_id: question.question_id,
+                question: question.question,
+                additional_info: question.additional_info,
+                category: question.category,
+                date_created: formattedDate,
+                question_asker: question.question_asker,
+                answers: answers
+            };
+        });
+
+        // RETURN THE formattedQuestions AS THE RESPONSE
+        res.status(200).json(formattedQuestions);
     } catch (error: any) {
-      res.json(`ERROR: ${error.message}`);
+        res.json(`ERROR: ${error.message}`);
     }
-  };
-  
+};
+
 
 /* EXPORT MODULE | getQuestionById */
 export const getQuestionById = async (req: Request<{ question_id: string }>, res: Response) => {
