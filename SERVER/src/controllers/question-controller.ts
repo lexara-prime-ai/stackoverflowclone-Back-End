@@ -6,9 +6,10 @@ import { QUESTION_MODEL } from '../interfaces/types';
 
 
 /* EXPORT MODULE | getQuestions */
-export const getQuestions = async (req: Request, res: Response) => {
+export const getQuestions = async (req: Request, res: Response) => { 
     try {
-
+   
+        // GET questions
         let questions = await (await DB_OPERATIONS.EXECUTE('GetQuestionsWithAnswersAndDisplayNames')).recordset;
 
         // FORMAT THE questions ARRAY
