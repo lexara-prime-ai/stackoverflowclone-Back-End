@@ -17,8 +17,8 @@ VALUES
 --#######################
 INSERT INTO Questions (question, additional_info, category, user_id) 
 VALUES 
-  ('What is the capital of France?', 'Asking for a trivia night', 'Geography', 1), 
-  ('How do I bake a chocolate cake?', 'Looking for a recipe', 'Cooking', 2), 
+  ('How do I create a responsive layout using HTML and CSS?', 'Trying to learn design', 'UI design', 1), 
+  ('How do I debug a memory leak in my C# application?', 'Looking for a simple solution', 'C#', 2), 
   ('What are the benefits of regular exercise?', 'Interested in starting a fitness routine', 'Health', 3), 
   ('What is Javascript?', 'I only know Typescript', 'Programming', 3), 
   ('What is the best programming language for beginners?', 'Wanting to learn coding', 'Technology', 4), 

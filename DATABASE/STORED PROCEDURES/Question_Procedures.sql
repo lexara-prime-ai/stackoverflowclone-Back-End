@@ -15,6 +15,44 @@ END
 
 EXEC getQuestions
 
+--####################################################
+-- GET QUESTIONS ALONG WITH ANSWERS AND DISPLAY NAMES
+--####################################################
+CREATE OR ALTER PROCEDURE GetQuestionsWithAnswersAndDisplayNames
+AS
+BEGIN
+    SELECT
+        Q.question_id,
+        Q.question,
+        Q.additional_info,
+        Q.category,
+        Q.date_created,
+        UQ.display_name AS question_asker,
+        (
+            SELECT
+                A.answer_id,
+                A.answer,
+                UA.display_name AS answerer
+            FROM
+                Answers A
+            INNER JOIN
+                Users UA ON A.user_id = UA.user_id
+            WHERE
+                A.question_id = Q.question_id
+                AND A.deleted = 0
+            FOR JSON PATH
+        ) AS answers
+    FROM
+        Questions Q
+    INNER JOIN
+        Users UQ ON Q.user_id = UQ.user_id
+    WHERE
+        Q.deleted = 0
+    ORDER BY
+        Q.date_created DESC;
+END
+
+EXEC GetQuestionsWithAnswersAndDisplayNames;
 
 --######################################################
 --CREATE STORED PROCEDURE FOR GETTING A SINGLE QUESTION

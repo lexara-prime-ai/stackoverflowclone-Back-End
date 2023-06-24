@@ -16,6 +16,21 @@ END
 --##################
 EXEC getAnswers
 
+--############################
+-- GET ANSWERS BY question_id
+--############################
+CREATE OR ALTER PROCEDURE getAnswersByQuestionId
+    @question_id INT
+AS
+BEGIN
+    SELECT A.answer_id, A.answer, A.question_id, U.user_id, U.display_name AS answered_by
+    FROM Answers A
+    JOIN Users U ON A.user_id = U.user_id
+    WHERE A.question_id = @question_id
+END
+
+EXEC getAnswersByQuestionId @question_id=4
+
 --###################################
 --CREATE STORED PROCEDURE FOR GETTING INDIVIDUAL ANSWERS
 --###################################
