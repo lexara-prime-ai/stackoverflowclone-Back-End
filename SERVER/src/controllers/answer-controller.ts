@@ -159,7 +159,7 @@ export const downVoteAnswer = async (req: Request, res: Response) => {
             vote_type
         });
 
-        /* INCREASE VOTE COUNT */
+        /* DECREASE VOTE COUNT */
         await DB_OPERATIONS.EXECUTE('decreaseAnswerVoteCount', {
             answer_id
         });
