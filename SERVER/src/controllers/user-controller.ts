@@ -10,6 +10,7 @@ dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 /* CUSTOM MODULES */
 import { DB_OPERATIONS } from '../helpers/DB-OPERATIONS';
 import { VALIDATION_SCHEMA } from '../helpers/LOGIN-VALIDATION';
+import { USER_MODEL } from "../interfaces/types";
 
 /* EXPORT MODULE | getUsers */
 export const getUsers = async (req: Request, res: Response) => {
@@ -25,7 +26,7 @@ export const getUsers = async (req: Request, res: Response) => {
 /* EXPORT MODULE | getUserById */
 export const getUserById = async (req: Request<{ user_id: string }>, res: Response) => {
     try {
-        /* GET user_id FROM REQUEST BODY */ 
+        /* GET user_id FROM REQUEST BODY */
         const { user_id } = req.params;
 
         let user = await (await DB_OPERATIONS.EXECUTE('getUserById', { user_id })).recordset[0];
@@ -161,7 +162,13 @@ export const signInUser = async (req: Request, res: Response) => {
         /* CREATE PAYLOAD */
         const payload = user.map(USER_INFO => {
             const { password, ...rest } = USER_INFO;
-            return rest;
+            const isAdmin = USER_INFO.admin === 1 ? true : false;
+            return {
+                ...rest,
+                user_id: USER_INFO.user_id,
+                admin: isAdmin,
+                display_name: USER_INFO.display_name
+            };
         });
 
         /* GENERATE TOKEN AND ASSIGN IT TO A USER */

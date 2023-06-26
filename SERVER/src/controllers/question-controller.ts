@@ -11,11 +11,11 @@ export const getQuestions = async (req: Request, res: Response) => {
    
         // GET questions
         let questions = await (await DB_OPERATIONS.EXECUTE('GetQuestionsWithAnswersAndDisplayNames')).recordset;
-
+ 
         // FORMAT THE questions ARRAY
         const formattedQuestions = questions.map((question) => {
             // PARSE THE answers FIELD FROM string TO AN array OF objects
-            const answers = JSON.parse(question.answers);
+            const answers = question.answers ? JSON.parse(question.answers) : [];
             // FROMAT THE date_created FIELD
             const dateCreated = new Date(question.date_created);
             // PASS IN PARAMETERS TO toLocaleDateString() TO SPECIFY THE

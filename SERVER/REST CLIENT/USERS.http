@@ -8,8 +8,8 @@ POST http://localhost:8000/auth/sign-in
 Content-Type: application/json
 
 {
-    "email": "jonathanndambuki16@gmail.com",
-    "password": "new_password"
+    "email": "stacknewbie@gmail.com",
+    "password": "admin@2023"
 }
 
 #### SIGN IN USER ####
@@ -35,7 +35,7 @@ Content-Type: application/json
 {
     "display_name": "admin",
     "email": "stacknewbie@gmail.com",
-    "password": "admin"
+    "password": "admin@2023"
 }
 
 ### ADD USER no.2
@@ -81,13 +81,14 @@ Content-Type: application/json
 }
 
 #### UPDATE USER ####
-PUT http://localhost:8000/users/2
+PUT http://localhost:8000/users/6
 Content-Type: application/json
 
 {
-    "display_name": "Jonathan Ndambuki",
-    "email": "jonathanndambuki16@gmail.com",
-    "password": "updated_password"
+    "display_name": "admin",
+    "email": "stacknewbie@gmail.com",
+    "password": "admin@2023",
+    "admin": 1
 }
 
 #### DELETE USER ####
