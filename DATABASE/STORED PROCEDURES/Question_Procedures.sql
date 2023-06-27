@@ -32,6 +32,7 @@ BEGIN
             SELECT
                 A.answer_id,
                 A.answer,
+				A.vote_count,
                 UA.display_name AS answerer
             FROM
                 Answers A

@@ -129,11 +129,6 @@ export const upVoteAnswer = async (req: Request, res: Response) => {
             vote_type
         });
 
-        /* INCREASE VOTE COUNT */
-        await DB_OPERATIONS.EXECUTE('IncreaseAnswerVoteCount', {
-            answer_id
-        });
-
         /* SUCCESS STATE */
         res.status(200).json({
             message: 'Answer upvoted!'
@@ -157,11 +152,6 @@ export const downVoteAnswer = async (req: Request, res: Response) => {
             answer_id,
             user_id,
             vote_type
-        });
-
-        /* DECREASE VOTE COUNT */
-        await DB_OPERATIONS.EXECUTE('decreaseAnswerVoteCount', {
-            answer_id
         });
 
         /* SUCCESS STATE */
