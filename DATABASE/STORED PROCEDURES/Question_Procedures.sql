@@ -27,13 +27,15 @@ BEGIN
         Q.additional_info,
         Q.category,
         Q.date_created,
+        Q.user_id AS question_asker_id,
         UQ.display_name AS question_asker,
         (
             SELECT
                 A.answer_id,
                 A.answer,
-				A.vote_count,
-                UA.display_name AS answerer
+                A.vote_count,
+                UA.display_name AS answerer,
+                UA.user_id AS answerer_id
             FROM
                 Answers A
             INNER JOIN

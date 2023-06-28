@@ -28,6 +28,7 @@ export const getQuestions = async (req: Request, res: Response) => {
                 additional_info: question.additional_info,
                 category: question.category,
                 date_created: formattedDate,
+                question_asker_id: question.question_asker_id,
                 question_asker: question.question_asker,
                 answers: answers
             };
